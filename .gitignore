@@ -1,0 +1,75 @@
+# ===============================
+# Python
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ===============================
+# Entornos virtuales
+# ===============================
+venv/
+env/
+.venv/
+
+# ===============================
+# Django
+# ===============================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Migraciones (opcional)
+# Si quieres versionarlas, comenta estas líneas
+migrations/
+!*/migrations/
+!*/migrations/__init__.py
+
+# ===============================
+# Static & Media
+# ===============================
+staticfiles/
+media/
+dataset/
+
+# Tailwind build (si usas django-tailwind)
+node_modules/
+package-lock.json
+yarn.lock
+
+# ===============================
+# Variables de entorno
+# ===============================
+.env
+.env.*
+
+# ===============================
+# IDEs y editores
+# ===============================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ===============================
+# Sistema operativo
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Tests / Coverage
+# ===============================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ===============================
+# Build / Deploy
+# ===============================
+dist/
+build/
+*.egg-info/
