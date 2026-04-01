@@ -1,39 +1,54 @@
-{% extends 'core/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Inicio - Detección de Animales IA{% endblock %}
+{% block title %}Inicio - Detección de Animales con IA{% endblock %}
 
-{% block extra_head %}
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h2>Identifica especies en segundos</h2>
-    <p>Sube una imagen y nuestro modelo de redes neuronales analizará los patrones para detectar e identificar al animal presente en la foto.</p>
-</div>
-
-<div class="upload-container">
-    <form method="POST" enctype="multipart/form-data" action="">
-        {% csrf_token %}
-        
-        <div class="upload-box" onclick="document.getElementById('imageInput').click()">
-            <div class="upload-icon">📸</div>
-            <p id="uploadText">Haz clic para seleccionar o arrastra una imagen aquí</p>
-            <input type="file" id="imageInput" name="animal_image" accept="image/*" style="display: none;" required>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>INTELIGENCIA ARTIFICIAL PARA LA DETECCIÓN DE ANIMALES</h1>
+            <p>Identificación precisa y automática para la conservación de la biodiversidad.</p>
+            <div class="hero-btns">
+                <button class="btn-primary">Sube tu imagen / Video</button>
+                <button class="btn-secondary">Solicita una demostración</button>
+            </div>
         </div>
-        
-        <button type="submit" class="btn-analyze">Analizar Imagen con IA</button>
-    </form>
+    </section>
 
-    {% if animal_prediction %}
-    <div class="results-placeholder" style="display: block;">
-        <h3>Resultados de la Predicción:</h3>
-        <p><strong>Especie detectada:</strong> {{ animal_prediction }}</p>
-        <p><strong>Nivel de confianza:</strong> {{ confidence_score }}%</p>
-    </div>
-    {% endif %}
-</div>
+    <section class="detection-grid" id="tecnologia">
+        <h2 class="section-title">IA en Acción</h2>
+        <div class="grid-container">
+            <div class="card main-card">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&q=80&w=800" alt="Jaguar">
+                <div class="overlay-tag">JAGUAR | 98.7% Confidencia</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1557406239-90ef5a17de2c?auto=format&fit=crop&q=80&w=400" alt="Dron">
+                <div class="overlay-tag">MONITOREO AÉREO</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&q=80&w=400" alt="Térmica">
+                <div class="overlay-tag">CÁMARA TÉRMICA</div>
+            </div>
+        </div>
+    </section>
 
-<script src="{% static 'core/js/index.js' %}"></script>
+    <section class="stats">
+        <div class="stat-item">
+            <h3>1,200+</h3>
+            <p>Proyectos Activos</p>
+        </div>
+        <div class="stat-item">
+            <h3>25,000+</h3>
+            <p>Especies Detectadas</p>
+        </div>
+        <div class="stat-item">
+            <h3>99.5%</h3>
+            <p>Precisión de la IA</p>
+        </div>
+    </section>
 {% endblock %}

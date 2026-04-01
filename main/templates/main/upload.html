@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cargar Análisis - FAUNA_DETECT{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'main/css/upload.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="upload-page">
+    <header class="upload-header">
+        <h1>CARGAR IMAGEN O VIDEO PARA ANÁLISIS</h1>
+        <p>Sube tus archivos para la detección automática de fauna con Inteligencia Artificial</p>
+    </header>
+
+    <div class="analysis-container">
+        <aside class="panel preview-panel">
+            <h3>PREVISUALIZACIÓN DE ARCHIVO</h3>
+            <div class="preview-box">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&q=80&w=500" alt="Vista previa">
+                <div class="detection-overlay">
+                    <span class="label">JAGUAR | 98.7% Confidencia</span>
+                </div>
+            </div>
+            <div class="upload-status">
+                <p>photo_trap_01.jpg <span>75%</span></p>
+                <div class="progress-bar"><div class="fill"></div></div>
+                <small>Uploading...</small>
+            </div>
+        </aside>
+
+        <section class="panel drop-zone-panel">
+            <div class="drop-zone" id="drop-zone">
+                <div class="icon-cloud">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h2>Arrastra y suelta imágenes o videos</h2>
+                <p>o selecciona desde tu dispositivo</p>
+                
+                <form method="POST" enctype="multipart/form-data" id="upload-form">
+                    {% csrf_token %}
+                    <input type="file" name="file" id="file-input" hidden>
+                    
+                    <button type="button" class="btn-select" id="custom-button">
+                        SELECCIONAR ARCHIVO
+                    </button>
+                    
+                    <div class="action-btns" style="margin-top: 20px;">
+                        <button type="submit" class="btn-start">INICIAR ANÁLISIS DE IA</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <aside class="panel config-panel">
+            <h3>CONFIGURAR ANÁLISIS</h3>
+            <div class="form-group">
+                <label>Tipo de Detección</label>
+                <select>
+                    <option>Multiespecies, Conteo, Jaguares Ecuador</option>
+                    <option>Aves Neotropicales</option>
+                    <option>Monitoreo de Ganado</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Modelo IA</label>
+                <select>
+                    <option>FaunaV3 Default</option>
+                    <option>FaunaV2 Legacy</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Prioridad</label>
+                <input type="range" min="1" max="5" value="3" class="slider">
+            </div>
+            <div class="action-btns">
+                <button type="submit" form="upload-form" class="btn-start">INICIAR ANÁLISIS DE IA</button>
+                <button type="button" class="btn-cancel">CANCELAR</button>
+            </div>
+        </aside>
+    </div>
+
+    <section class="history-section">
+        <h3>HISTORIAL DE ANÁLISIS RECIENTES</h3>
+        <div class="history-grid">
+            <div class="history-item">
+                <div class="status-icon success"><i class="fas fa-check-circle"></i></div>
+                <div class="history-info">
+                    <strong>Detección #TRP_010</strong>
+                    <span>Finalizado</span>
+                </div>
+                <div class="history-data">2 Culebras</div>
+                <div class="history-conf">95% Conf.</div>
+            </div>
+            </div>
+    </section>
+</div>
+<script src="{% static 'main/js/script.js' %}"></script>
+
+{% endblock %}
