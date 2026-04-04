@@ -1,15 +1,19 @@
 from ultralytics import YOLO
+import torch
 
-model = YOLO("yolov8n-cls.pt")
+def main():
+    print(torch.cuda.is_available())
 
-model.train(
-    data="dataset",  # carpeta raíz
-    epochs=50,
-    imgsz=224,
-    name="clasificador_animales"
-)
+    model = YOLO("yolov8n-cls.pt")
 
-model = YOLO("runs/classify/clasificador_animales/weights/best.pt")
+    model.train(
+        data="dataset",
+        epochs=30,
+        imgsz=224,
+        name="clasificador_animales"
+    )
 
-results = model("imagen.jpg")
-print(results[0].probs)
+    model = YOLO("runs/classify/clasificador_animales2/weights/best.pt")
+
+if __name__ == "__main__":
+    main()

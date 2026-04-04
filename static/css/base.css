@@ -36,9 +36,16 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 2px;
+    text-decoration: none;
 }
 
 .logo span { color: var(--primary-color); }
+
+.logo:hover {
+    transform: scale(1.05);
+    color: #000;
+}
+
 
 nav ul { display: flex; list-style: none; }
 nav ul li { margin-left: 2rem; }

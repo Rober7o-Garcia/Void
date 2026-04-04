@@ -32,6 +32,7 @@ migrations/
 staticfiles/
 media/
 dataset/
+runs/
 
 # Tailwind build (si usas django-tailwind)
 node_modules/
